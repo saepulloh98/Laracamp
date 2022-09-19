@@ -15,11 +15,15 @@ return new class extends Migration
     {
         Schema::create('camp_benefits', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('camp_id')->unsigned();
+            // first methode
+            // $table->unsignedBigInteger('camp_id');
+            // $table->bigInteger('camp_id')->unsigned();
+            // second methode
+            $table->foreignId('camp_id')->constrained();
             $table->string('name');
             $table->timestamps();
-
-            $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
+            // first methode
+            // $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
         });
     }
 
